@@ -1,18 +1,75 @@
 
-     ,-----.,--.                  ,--. ,---.   ,--.,------.  ,------.
-    '  .--./|  | ,---. ,--.,--. ,-|  || o   \  |  ||  .-.  \ |  .---'
-    |  |    |  || .-. ||  ||  |' .-. |`..'  |  |  ||  |  \  :|  `--, 
-    '  '--'\|  |' '-' ''  ''  '\ `-' | .'  /   |  ||  '--'  /|  `---.
-     `-----'`--' `---'  `----'  `---'  `--'    `--'`-------' `------'
-    ----------------------------------------------------------------- 
+netstat -panut | grep LISTEN
+sudo service odoo start
 
 
-Hi there! Welcome to Cloud9 IDE!
+#OPEN ROOT 
+sudo su
 
-To get you started, create some files, play with the terminal,
-or visit http://docs.c9.io for our documentation.
-If you want, you can also go watch some training videos at
-http://www.youtube.com/user/c9ide.
+#bash cd /etc/odoo
+cd /etc/odoo
 
-Happy coding!
-The Cloud9 IDE team
+#edit add
+vi openerp-server.conf
+--xmlrpc-port <port>
+    xmlrpc_port = 8080
+    
+#bash in root    <_
+cd /var/log/odoo/  |
+    tail           |
+                   |
+#psql             _|
+psql postgres
+
+
+#start db in root frest ( sudo su ) and teyp in bash command
+service postgresql start
+
+su - postgres
+
+/etc/odoo
+
+psql postgres
+sql> \du
+                             List of roles
+ Role name |                   Attributes                   | Member of 
+-----------+------------------------------------------------+-----------
+ postgres  | Superuser, Create role, Create DB, Replication | {}
+ ubuntu    | Superuser, Create role, Create DB              | {}
+ 
+CREATE ROLE odoo WITH PASSWORD 'odoo01' SUPERUSER;
+sql> ALTER ROLE odoo WITH LOGIN; & Superuser
+\q
+exit
+in root 
+service postgresql stop
+service postgresql start
+
+#################
+#edit add
+vi openerp-server.conf
+--xmlrpc-port <port>
+    xmlrpc_port = 8080
+    
+[options] 
+; This is the password that allows database operations:
+; admin_passwd = admin
+db_host = False
+db_port = False
+db_user = odoo
+db_password = odoo01
+addons_path = /usr/lib/python2.7/dist-packages/openerp/addons 
+xmlrpc_port = 8080 
+
+### utf-8 Error
+
+    su - postgres
+    psql postgres
+    
+sql> UPDATE pg_database  set datistemplate = FALSE WHERE datname = 'template1';
+sql> DROP  database template1 ;
+sql> CREATE DATABASE template1 with template = template0 encoding = 'unicode';
+sql> UPDATE pg_database  set datistemplate = true WHERE datname = 'template1';
+sql> \c template1
+sql> vacuum freeze;
+\q
