@@ -46,6 +46,7 @@ service postgresql stop
 service postgresql start
 
 #################
+
 #edit add
 vi openerp-server.conf
 --xmlrpc-port <port>
