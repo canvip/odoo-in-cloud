@@ -1,7 +1,13 @@
+#nstall odoo
+README
+sudo service odoo start && sudo service postgresql start
+# wget -O - https://nightly.odoo.com/odoo.key | apt-key add -
+# echo "deb http://nightly.odoo.com/10.0/nightly/deb/ ./" >> /etc/apt/sources.list.d/odoo.list
+# apt-get update && apt-get install odoo
 
 netstat -panut | grep LISTEN
 sudo service odoo start
-
+odoo.py scaffold blog  ./blog/
 
 #OPEN ROOT 
 sudo su
@@ -16,7 +22,7 @@ vi openerp-server.conf
     
 #bash in root    <_
 cd /var/log/odoo/  |
-    tail           |
+tail odoo-server.log       |
                    |
 #psql             _|
 psql postgres
