@@ -1,6 +1,7 @@
 #nstall odoo
 README
 sudo service odoo start && sudo service postgresql start
+sudo service odoo restart && sudo service postgresql restart
 # wget -O - https://nightly.odoo.com/odoo.key | apt-key add -
 # echo "deb http://nightly.odoo.com/10.0/nightly/deb/ ./" >> /etc/apt/sources.list.d/odoo.list
 # apt-get update && apt-get install odoo

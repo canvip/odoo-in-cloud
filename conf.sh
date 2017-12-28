@@ -41,13 +41,13 @@ OE_CONFIG="${OE_USER}"
 ## https://www.odoo.com/documentation/8.0/setup/install.html#deb ):
 WKHTMLTOX_X64=https://downloads.wkhtmltopdf.org/0.12/0.12.1/wkhtmltox-0.12.1_linux-trusty-amd64.deb
 WKHTMLTOX_X32=https://downloads.wkhtmltopdf.org/0.12/0.12.1/wkhtmltox-0.12.1_linux-trusty-i386.deb
-sudo npm install -g less less-plugin-clean-css -y && sudo ln -s /usr/bin/nodejs /usr/bin/node
+#sudo npm install -g less less-plugin-clean-css -y && sudo ln -s /usr/bin/nodejs /usr/bin/node
 
 echo -e "\n---- Creating the ODOO PostgreSQL User  ----"
 sudo su - postgres -c "createuser -s $OE_USER" 2> /dev/null || true
 sudo su - postgres -c "psql -c \"update pg_database set datallowconn = TRUE where datname = 'template0';\""
-sudo su - postgres -c "psql -d template0 -c \"drop database template1;\""
-sudo su - postgres -c "psql -d template0 -c \"create database template1 with template = template0 encoding = 'unicode';\""
+sudo su - postgres -c "psql -c \"drop database template1;\""
+sudo su - postgres -c "psql -c \"create database template1 with template = template0 encoding = 'unicode';\""
 sudo su - postgres -c "psql -d template0 -c \"update pg_database set datistemplate = TRUE where datname = 'template1';\""
 sudo su - postgres -c "psql -c  \"\c template1;\""
 sudo su - postgres -c "psql -d template0 -c \" vacuum freeze;\""
@@ -75,12 +75,12 @@ fi
 #echo -e "\n---- Create ODOO system user ----"
 #sudo adduser --system --quiet --shell=/bin/bash --home=$OE_HOME --gecos 'ODOO' --group $OE_USER
 #The user should also be added to the sudo'ers group.
-sudo adduser $OE_USER sudo
+#sudo adduser $OE_USER sudo
 
 
 
-echo -e "\n---- Setting permissions on home folder ----"
-sudo chown -R $OE_USER:$OE_USER $OE_HOME/*
+#echo -e "\n---- Setting permissions on home folder ----"
+#sudo chown -R $OE_USER:$OE_USER $OE_HOME/*
 
 echo -e "* Create server config file"
 
