@@ -1,0 +1,19 @@
+git init && git add * &&  git commit -m '**' && git push origin master --force
+
+http://odoo-canvip.c9users.io/web/database/manager
+
+Included Dependencies
+• OpenEduCat Attendance 
+• Web OpenEduCat 
+• OpenEduCat Support 
+• OpenEduCat Core 
+• OpenEduCat Fees 
+• OpenEduCat Assignment 
+• OpenEduCat Parent 
+• OpenEduCat Activity 
+• OpenEduCat Admission 
+• OpenEduCat Facility 
+• OpenEduCat Library 
+• OpenEduCat Classroom 
+• OpenEduCat Timetable 
+• OpenEduCat Exam 
