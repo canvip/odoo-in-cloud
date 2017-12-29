@@ -49,7 +49,7 @@ sudo su - postgres -c "psql -c \"CREATE ROLE odoo WITH PASSWORD 'odoo' SUPERUSER
 sudo su - postgres -c "psql -c \"ALTER ROLE odoo WITH LOGIN;\""
 sudo su - postgres -c "psql -c \"update pg_database set datallowconn = TRUE where datname = 'template0';\""
 sudo su - postgres -c "psql -d template0 -c \"drop database template1;\""
-sudo su - postgres -c "psql -d template0 -c \"create database template1 with template = template0 encoding = 'unicode';\""
+sudo su - postgres -c "psql -d template0 -c \"create database template1 with template = template0 encoding = 'utf-8';\""
 sudo su - postgres -c "psql -d template0 -c \"update pg_database set datistemplate = TRUE where datname = 'template1';\""
 sudo su - postgres -c "psql -c  \"\c template1;\""
 sudo su - postgres -c "psql -d template0 -c \" vacuum freeze;\""
@@ -95,7 +95,7 @@ sudo su root -c "printf 'xmlrpc_port = ${OE_PORT}\n' >> /etc/odoo/${OE_CONFIG}.c
 
 echo -e "* Start ODOO on Startup"
 sudo service odoo stop && sudo service postgresql stop && sudo service odoo start && sudo service postgresql start
-
+sudo service odoo restart && sudo service postgresql restart
 
 echo -e "* Starting Odoo Service"
 

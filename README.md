@@ -1,3 +1,5 @@
+wynebwmfbpqydpch
+
 #nstall odoo
 README
 sudo service odoo start && sudo service postgresql start
